@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="Ferramentas">Ferramentas</button>
+  <mat-menu #Ferramentas="matMenu">
+    <button mat-menu-item (click)="onMenu('variaveis')">Variáveis</button>
+    <button mat-menu-item (click)="onMenu('classes')">Classes</button>
+    <button mat-menu-item (click)="onMenu('projetos')">Projetos</button>
+  </mat-menu>
+</mat-toolbar>
+<app-gerente-variavel *ngIf="menu === 'variaveis'"></app-gerente-variavel>
+<app-gerente-classe *ngIf="menu === 'classes'"></app-gerente-classe>
+<app-gerente-projeto *ngIf="menu === 'projetos'"></app-gerente-projeto>

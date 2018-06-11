@@ -1,0 +1,20 @@
+<div mat-dialog-title>
+    Propriedades da Pasta: {{data.pasta.nome}}
+</div>
+<mat-dialog-content fxLayout="column">  
+    <mat-form-field fxFlex>
+      <input [(ngModel)]="data.pasta.nome" 
+            name="texto" 
+            matInput id="texto" 
+            placeholder="Nome da Pasta">
+    </mat-form-field>
+    <div>Classes permitidas nessa pasta:</div>
+    <mat-checkbox *ngFor="let classe of classes" [checked]="isChecked(classe)"
+    (change)="selClasse(classe)">
+      {{classe.nome}}
+    </mat-checkbox> 
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="sair()" mat-dialog-close>Salvar</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex="40">
+      <mat-nav-list>
+        <mat-list-item 
+          *ngFor="let projeto of projetos" 
+          (click)="selProjeto(projeto)">
+          {{projeto.nome}}
+        </mat-list-item>
+      </mat-nav-list> 
+  </div>
+  <mat-card fxFlex="40" class="margin-1">
+      <mat-card-content fxLayout="column">
+      {{projetoSelecionado._id}}
+      <mat-form-field fxFlex>
+        <input [(ngModel)]="projetoSelecionado.nome" 
+              name="nome" 
+              matInput id="nome" 
+              placeholder="Nome do Projeto">
+      </mat-form-field>
+
+      <div fxLayout="row" fxFlex style="min-width: 400px;">
+        <mat-tree [dataSource]="pastas" [treeControl]="treeControl">          
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <button mat-icon-button matTreeNodeToggle>
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'folder_open' : 'folder'}}
+              </mat-icon>
+            </button>
+            {{node.nome}}
+            <button mat-icon-button (click)="adicionarPasta(node)">
+              <mat-icon class="mat-icon-rtl-mirror">
+                add
+              </mat-icon>
+            </button>
+            <button mat-icon-button (click)="removerPasta(node)">
+              <mat-icon class="mat-icon-rtl-mirror">
+                remove
+              </mat-icon>
+            </button>
+            <button mat-icon-button (click)="editarPasta(node, true)">
+              <mat-icon class="mat-icon-rtl-mirror">
+                edit
+              </mat-icon>
+            </button>
+            <button mat-icon-button (click)="vincularPasta(node)">
+              <mat-icon class="mat-icon-rtl-mirror">
+                link
+              </mat-icon>
+            </button>
+          </mat-tree-node>
+        </mat-tree> 
+      </div>
+
+      <mat-card-actions fxLayout="row">
+        <span fxFlex></span>
+        <button mat-raised-button color="primary" (click)="salvarProjeto()">Salvar</button>
+      </mat-card-actions>
+    </mat-card-content>  
+
+  </mat-card>
+</div>

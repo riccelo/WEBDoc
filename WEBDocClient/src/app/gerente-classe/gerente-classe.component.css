@@ -1,0 +1,10 @@
+.borda {
+    border: 2px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px
+}
+
+#classe * {
+    margin: 5px;
+}

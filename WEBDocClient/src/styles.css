@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.rosa {
+    background-color: pink;
+}
+
+.margin-1 * {
+    margin: 1px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}

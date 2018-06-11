@@ -1,0 +1,10 @@
+<mat-nav-list fxFlex="33">
+  <div *ngFor="let projeto of projetos" fxLayout="row">
+  <mat-list-item fxFlex (click)="onSelect(projeto)">
+    {{projeto.nome}}
+  </mat-list-item>
+  <button mat-mini-fab (click)="apagar(projeto, $event)">
+    <mat-icon class="material-icon">delete</mat-icon>
+  </button>
+</div>
+</mat-nav-list>

@@ -1,0 +1,14 @@
+<div mat-dialog-title>
+  {{data.titulo}}
+</div>
+<mat-dialog-content>  
+    <mat-form-field fxFlex>
+      <input [(ngModel)]="data.texto" 
+            name="texto" 
+            matInput id="texto" 
+            placeholder="{{data.titulo}}">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="sair()" mat-dialog-close>Sair</button>
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+<div mat-dialog-title>
+    Novo Objeto: 
+</div>
+<mat-dialog-content fxLayout="column">  
+  <!-- Selecionar a classe para definir as características do objeto -->
+  <mat-form-field fxFlex>
+    <mat-select [(ngModel)]="objeto.classe" placeholder="Escolha o tipo de objeto a se criar:"
+    (selectionChange)="selClasse($event)">
+      <mat-option *ngFor="let classe of data.pasta.classes"
+       [value]="classe">
+        {{classe.nome}}
+      </mat-option> 
+    </mat-select>
+  </mat-form-field>
+    <!-- Defini o nome do objeto -->
+    <mat-form-field fxFlex>
+      <input [(ngModel)]="objeto.nome" 
+            name="texto" 
+            matInput id="texto" 
+            placeholder="Nome do Objeto">
+    </mat-form-field>
+    <!-- Exibe as variaveis para preenchimento -->
+    <mat-card *ngIf="objeto.classe">
+      <app-propriedades-edicao [objeto]="objeto"></app-propriedades-edicao>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row">
+    <span fxFlex></span>
+    <button mat-raised-button color="primary" (click)="salvar()" mat-dialog-close>Salvar</button>
+    <button mat-raised-button color="primary" (click)="cancelar()" mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>

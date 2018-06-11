@@ -1,0 +1,45 @@
+<div fxLayout="column">
+  <mat-card class="margem-inferior">
+    <mat-card-title color="primary">
+      <mat-toolbar color="primary">{{ projeto.nome | uppercase }}</mat-toolbar>      
+    </mat-card-title>
+    <mat-card-content>
+      <div><span>id: </span>{{projeto._id}}</div>
+      <div>
+      <label>Nome:
+        <input [(ngModel)]="projeto.nome" placeholder="Projeto">
+      </label>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div fxLayout="row" fxLayout.xs="column">
+    <mat-card fxLayout="column" fxFlex="30" ngClass="margem-direita" ngClass.xs=" margem-inferior">      
+      <mat-card-content>
+        <mat-tree [dataSource]="pastas" [treeControl]="treeControl">          
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <button mat-icon-button matTreeNodeToggle>
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'folder_open' : 'folder'}}
+              </mat-icon>
+            </button>
+            <span (click)="selecionarPasta(node)">{{node.nome}}</span>
+          </mat-tree-node>
+        </mat-tree> 
+      </mat-card-content>
+    </mat-card>
+
+    <app-pasta-view 
+      *ngIf="pastaSelecionada != null" 
+      [pasta]="pastaSelecionada" 
+      [objetos]="objetosPasta"
+      fxFlex></app-pasta-view>
+
+    <!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader"/>
+
+    <button type="button" class="btn btn-success btn-s" 
+      (click)="uploader.uploadAll()" 
+      [disabled]="!uploader.getNotUploadedItems().length" >
+          Upload an Image
+    </button> -->
+  </div>
+</div>

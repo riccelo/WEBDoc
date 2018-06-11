@@ -1,0 +1,23 @@
+<div mat-dialog-title>
+    Novo Projeto: {{projeto.nome}}
+</div>
+<mat-dialog-content fxLayout="column">  
+  <mat-form-field fxFlex>
+    <input [(ngModel)]="projeto.nome" 
+          name="texto" 
+          matInput id="texto" 
+          placeholder="Nome do Projeto">
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <label>Modelo de Projeto</label>
+    <mat-select name="modeloProjeto" [(ngModel)]="projetoModelo">
+      <mat-option *ngFor="let projModelo of projetosModelos" [value]="projModelo">{{projModelo.nome}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <span fxFlex></span>
+    <button mat-raised-button color="primary" (click)="salvar()" mat-dialog-close>Salvar</button>
+    <button mat-raised-button color="primary" (click)="cancelar()" mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>
+

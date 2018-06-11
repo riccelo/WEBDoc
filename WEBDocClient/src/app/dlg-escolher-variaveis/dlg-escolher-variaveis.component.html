@@ -1,0 +1,31 @@
+<div mat-dialog-title>Variaveis da Classe</div>
+<mat-dialog-content>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutFill>
+  <div fxFlex="45" fxLayout="column">      
+      <mat-checkbox *ngFor="let variavel of variaveis"
+        ([ngModel])="variavel.checked" 
+        (click)="selVar(variavel, $event)">{{variavel.nome}}
+      </mat-checkbox>
+  </div> 
+
+  <div fxLayout="column" fxFlex>
+    <button mat-mini-fab color="primary" (click)="onAdicionarVariavel()">
+      <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_right</mat-icon>
+    </button>
+    <span style="height: 20px"></span>
+    <button mat-mini-fab color="primary" (click)="onRemoverVariavel()">
+      <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+  
+  <div fxFlex="45" fxLayout="column">      
+      <mat-checkbox *ngFor="let variavel of variaveisClasse"
+      ([ngModel])="variavel.checked"
+      (click)="selVar(variavel, $event)">{{variavel.nome}}</mat-checkbox>
+  </div> 
+</div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row">
+  <span fxFlex></span>
+  <button mat-raised-button color="primary" (click)="sair()" mat-dialog-close >Sair</button>
+</mat-dialog-actions>

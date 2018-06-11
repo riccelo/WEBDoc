@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutFill fxLayoutAlign="center none">
+  <div fxFlex="40">
+      <mat-nav-list>
+          <mat-list-item 
+            *ngFor="let classe of classes" 
+            (click)="onSelecionar(classe)">
+            {{classe.nome}}
+            <span fxFlex></span>
+            <button mat-mini-fab (click)="apagar(classe)">
+              <mat-icon class="material-icon">delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list> 
+  </div>
+
+  <div fxFlex="50" fxFlex.sm="100">
+    <mat-card>
+      <form fxLayout="column">
+        <mat-card-content>
+          {{selecionada._id}}
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <input  fxFlex="50" [(ngModel)]="selecionada.nome" name="nome" matInput id="nome" placeholder="Nome da Classe">
+            </mat-form-field>
+            <span fxFlex></span>
+            <button mat-button fxFlex="40">
+              <mat-icon class="material-icon" class="borda">home</mat-icon>
+            </button>
+          </div>
+          <div fxLayout="row">
+            <mat-checkbox [(ngModel)]="selecionada.permitePasta" name="permitePasta">Permite Pastas</mat-checkbox>        
+            <span fxFlex></span>
+            <button fxFlex="40" mat-raised-button color="primary" (click)="onDlgVariaveis()">Selecionar Variaveis</button>
+          </div>
+        </mat-card-content>
+          <mat-card-actions fxLayout="row">
+          <span fxFlex></span>
+          <button mat-raised-button fxFlex="30" color="primary" (click)="salvarClasse($event)">Salvar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>

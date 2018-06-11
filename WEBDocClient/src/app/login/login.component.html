@@ -1,0 +1,14 @@
+<div fxLayout="row" class="rosa" fxLayoutAlign="center center">
+  <mat-card fxFlex="40" fxFlex.xs="100">
+    <mat-toolbar color="primary">Bem vindo</mat-toolbar>
+    <form (submit)="login($event)" fxLayoutFill fxLayout="column">
+      <mat-form-field fxFlex>
+        <input matInput id="username" placeholder="E-mail">
+      </mat-form-field><br>
+      <mat-form-field fxFlex>
+          <input matInput id="password" placeholder="Senha">
+      </mat-form-field><br>
+      <button type="submit" mat-button color="primary">Entrar</button>
+    </form>
+  </mat-card>
+</div>

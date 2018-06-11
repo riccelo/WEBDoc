@@ -1,0 +1,23 @@
+<div  fxFlex fxLayout="row" fxLayoutAlign="center center">
+  <span fxFlex="50" style="background-color: yellow">{{propriedade.variavel.nome}}</span>
+  <span fxFlex></span>
+  <mat-form-field *ngIf="propriedade.variavel.tipo === 'Texto'" fxFlex style="background-color: pink">
+    <input type="text" [(ngModel)]="propriedade.valor" matInput/>
+  </mat-form-field>
+  <mat-form-field *ngIf="propriedade.variavel.tipo === 'Número'" fxFlex style="background-color: pink">
+    <input type="number" [(ngModel)]="propriedade.valor" matInput/>
+  </mat-form-field>
+  
+  <!-- <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+  
+  <mat-form-field *ngIf="propriedade.variavel.tipo === 'Data'" fxFlex style="background-color: pink">
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-checkbox *ngIf="propriedade.variavel.tipo === 'Sim/Não'" ([ngModel])="propriedade.valor"></mat-checkbox>
+</div>
